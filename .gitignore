@@ -87,6 +87,12 @@ void LinkedList::deleteTop() {
 	if (size == 0) {
 		cout << "list is empty" << endl;
 	}
+	else if (x->next == nullptr){
+		delete x;
+		top = nullptr;
+		size--;
+		cout << "list is now empty" << endl;
+	}
 	else {
 		top = top->next;
 		delete x;
