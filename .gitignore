@@ -47,22 +47,20 @@ void LinkedList::display() {
 }//display
 
 bool LinkedList::deleteVal(int v) {
+	if (top == nullptr) {
+		return false;
+	}
 	Node* trail = top;
 	Node* lead = top->next;
-	if (lead == nullptr) {
+	if (v == top->data && lead == nullptr) {
 		deleteBottom();
-		size--;
 		return true; 
 	}
-	else if (v == top->data) {
+	else if (v == top->data && lead != nullptr) {
 		deleteTop();
-		size--;
-		return true; 
+		return true;
 	}
 	else {
-		if (size == 0) {
-			return false;
-		}
 		while (lead != nullptr && lead->data != v) {
 			trail = lead;
 			lead = lead->next;
@@ -88,10 +86,10 @@ void LinkedList::deleteTop() {
 		cout << "list is empty" << endl;
 	}
 	else if (x->next == nullptr){
-		delete x;
-		top = nullptr;
-		size--;
-		cout << "list is now empty" << endl;
+		delete x; 
+		top = nullptr; 
+		size--; 
+		cout << "list is now empty" << endl; 
 	}
 	else {
 		top = top->next;
@@ -107,7 +105,7 @@ void LinkedList::deleteBottom() {
 		cout << "list is empty" << endl;
 	}
 
-	else if (x->next == nullptr) {
+	else if (x->next == nullptr) {;
 		delete x;
 		top = nullptr;
 		size--; 
