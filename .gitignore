@@ -109,8 +109,9 @@ void LinkedList::deleteBottom() {
 
 	else if (x->next == nullptr) {
 		delete x;
-		x = nullptr;
+		top = nullptr;
 		size--; 
+		cout << "list is now empty" << endl; 
 	}
 	else {
 		while (x->next->next != nullptr) {
